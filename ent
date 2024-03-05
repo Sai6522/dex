@@ -1,0 +1,84 @@
+Certainly! Here's an exercise on MongoDB shell commands and user management:
+
+1. **Connect to MongoDB**: Start by connecting to your MongoDB instance using the MongoDB shell:
+
+   ```bash
+   mongo
+   ```
+
+2. **Create a Database and Collection**: Create a new database called 'exercise' and a collection called 'users':
+
+   ```javascript
+   use exercise
+   db.createCollection('users')
+   ```
+
+3. **Insert Documents**: Insert some sample user documents into the 'users' collection:
+
+   ```javascript
+   db.users.insertMany([
+       { username: 'user1', email: 'user1@example.com', age: 25 },
+       { username: 'user2', email: 'user2@example.com', age: 30 },
+       { username: 'user3', email: 'user3@example.com', age: 35 }
+   ])
+   ```
+
+4. **Query Documents**: Retrieve all documents from the 'users' collection:
+
+   ```javascript
+   db.users.find()
+   ```
+
+5. **Update Documents**: Update the age of 'user1' to 26:
+
+   ```javascript
+   db.users.updateOne({ username: 'user1' }, { $set: { age: 26 } })
+   ```
+
+6. **Delete Documents**: Delete 'user3' from the collection:
+
+   ```javascript
+   db.users.deleteOne({ username: 'user3' })
+   ```
+
+7. **User Management**:
+   - **Create a User**: Create a new user with readWrite access to the 'exercise' database:
+
+     ```javascript
+     db.createUser({
+         user: 'exerciseUser',
+         pwd: 'password123',
+         roles: ['readWrite']
+     })
+     ```
+
+   - **Authenticate as New User**: Exit the MongoDB shell and authenticate as the newly created user:
+
+     ```bash
+     exit
+     ```
+
+     ```bash
+     mongo -u exerciseUser -p --authenticationDatabase exercise
+     ```
+
+   - **Access Database**: After authentication, you can access the 'exercise' database and perform operations:
+
+     ```javascript
+     use exercise
+     db.users.find()
+     ```
+
+   - **Drop User**: If needed, drop the created user:
+
+     ```javascript
+     db.dropUser('exerciseUser')
+     ```
+
+8. **Exit MongoDB Shell**: Finally, exit the MongoDB shell:
+
+   ```bash
+   exit
+   ```
+
+This exercise covers basic MongoDB shell commands, document operations, and user management tasks. Feel free to modify and expand upon it as needed for further practice.
