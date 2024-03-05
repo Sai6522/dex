@@ -1,0 +1,23 @@
+// Display records where the field 'comments' exists
+db.restaurant_records.find({ comments: { $exists: true } });
+
+// Display records where the field 'comments' does not exist
+db.restaurant_records.find({ comments: { $exists: false } });
+
+// Display records where the field 'grade' is of type string
+db.restaurant_records.find({ grade: { $type: 'string' } });
+
+// Display records where the field 'date' is of type date
+db.restaurant_records.find({ date: { $type: 'date' } });
+
+// Display records where the field 'restaurant_id' mod 2 equals 0
+db.restaurant_records.find({ restaurant_id: { $mod: [2, 0] } });
+
+// Display records where the field 'restaurant_id' mod 2 equals 1
+db.restaurant_records.find({ restaurant_id: { $mod: [2, 1] } });
+
+// Display records where the field 'restaurant_name' matches a regular expression (case insensitive)
+db.restaurant_records.find({ restaurant_name: { $regex: /restaurant/i } });
+
+// Display records where the field 'comments' contains the word 'service' (case insensitive)
+db.restaurant_records.find({ comments: { $regex: /service/i } });
