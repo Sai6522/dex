@@ -1,0 +1,53 @@
+In Cassandra, the database structure is organized differently from traditional relational databases. Instead of creating databases, tables are created within a keyspace. Let's go through creating a keyspace, altering it, dropping it, and performing data manipulation operations like inserting, updating, deleting, and truncating records:
+
+1. **Creating a Keyspace**:
+   ```cql
+   CREATE KEYSPACE IF NOT EXISTS my_keyspace 
+   WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
+   ```
+
+2. **Altering a Keyspace** (for example, changing replication settings):
+   ```cql
+   ALTER KEYSPACE my_keyspace 
+   WITH replication = {'class': 'NetworkTopologyStrategy', 'DC1': 3};
+   ```
+
+3. **Dropping a Keyspace**:
+   ```cql
+   DROP KEYSPACE IF EXISTS my_keyspace;
+   ```
+
+4. **Creating a Table**:
+   ```cql
+   CREATE TABLE IF NOT EXISTS my_keyspace.my_table (
+       id UUID PRIMARY KEY,
+       name TEXT,
+       age INT
+   );
+   ```
+
+5. **Inserting Records**:
+   ```cql
+   INSERT INTO my_keyspace.my_table (id, name, age) 
+   VALUES (uuid(), 'John', 30);
+   ```
+
+6. **Updating Records**:
+   ```cql
+   UPDATE my_keyspace.my_table 
+   SET age = 31 
+   WHERE id = <some_uuid>;
+   ```
+
+7. **Deleting Records**:
+   ```cql
+   DELETE FROM my_keyspace.my_table 
+   WHERE id = <some_uuid>;
+   ```
+
+8. **Truncating Table** (removes all records from the table):
+   ```cql
+   TRUNCATE my_keyspace.my_table;
+   ```
+
+These CQL (Cassandra Query Language) commands demonstrate creating a keyspace, altering it, dropping it, and performing data manipulation operations on a table within that keyspace. Remember to replace placeholders like `my_keyspace` and `my_table` with your actual keyspace and table names. Additionally, UUIDs are commonly used for primary keys in Cassandra tables, but you can use other types as well.
