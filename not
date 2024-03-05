@@ -1,0 +1,29 @@
+// Display records with grade greater than 'B'
+db.restaurant_records.find({ grade: { $gt: 'B' } });
+
+// Display records with grade greater than or equal to 'B'
+db.restaurant_records.find({ grade: { $gte: 'B' } });
+
+// Display records with grade less than 'B'
+db.restaurant_records.find({ grade: { $lt: 'B' } });
+
+// Display records with grade less than or equal to 'B'
+db.restaurant_records.find({ grade: { $lte: 'B' } });
+
+// Display records with grade in a list of values (e.g., 'A', 'B')
+db.restaurant_records.find({ grade: { $in: ['A', 'B'] } });
+
+// Display records with grade not in a list of values (e.g., 'C', 'D')
+db.restaurant_records.find({ grade: { $nin: ['C', 'D'] } });
+
+// Display records where restaurant_name is not equal to 'Restaurant A'
+db.restaurant_records.find({ restaurant_name: { $ne: 'Restaurant A' } });
+
+// Display records where grade is 'A' and cuisine is 'Italian'
+db.restaurant_records.find({ $and: [{ grade: 'A' }, { cuisine: 'Italian' }] });
+
+// Display records where grade is 'A' or cuisine is 'Italian'
+db.restaurant_records.find({ $or: [{ grade: 'A' }, { cuisine: 'Italian' }] });
+
+// Display records where grade is not 'A'
+db.restaurant_records.find({ grade: { $not: { $eq: 'A' } } });
