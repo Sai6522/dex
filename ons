@@ -1,0 +1,14 @@
+// Display records with a specific grade (e.g., grade 'A')
+db.restaurant_records.find({ grade: 'A' });
+
+// Display records with a specific cuisine (e.g., cuisine 'Italian')
+db.restaurant_records.find({ cuisine: 'Italian' });
+
+// Display records with a grade greater than or equal to 'B'
+db.restaurant_records.find({ grade: { $gte: 'B' } });
+
+// Display records from a specific locality (e.g., locality 'Downtown')
+db.restaurant_records.find({ locality: 'Downtown' });
+
+// Display records with comments containing a specific word (e.g., 'service')
+db.restaurant_records.find({ comments: /service/i });
