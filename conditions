@@ -1,0 +1,59 @@
+Sure! Here's an exercise based on Cassandra Query Language (CQL) for selecting records and selecting records with specific conditions:
+
+1. **Selecting All Records**:
+   ```cql
+   SELECT * FROM my_keyspace.my_table;
+   ```
+
+2. **Selecting Records with Specific Conditions**:
+   ```cql
+   -- Select records where age is greater than 25
+   SELECT * FROM my_keyspace.my_table WHERE age > 25;
+
+   -- Select records where name is 'John'
+   SELECT * FROM my_keyspace.my_table WHERE name = 'John';
+
+   -- Select records where age is between 20 and 30
+   SELECT * FROM my_keyspace.my_table WHERE age >= 20 AND age <= 30;
+
+   -- Select records where name starts with 'J'
+   SELECT * FROM my_keyspace.my_table WHERE name LIKE 'J%';
+
+   -- Select records where name contains 'oh'
+   SELECT * FROM my_keyspace.my_table WHERE name LIKE '%oh%';
+   ```
+
+3. **Selecting Records with Limit and Ordering**:
+   ```cql
+   -- Select top 10 records ordered by age in descending order
+   SELECT * FROM my_keyspace.my_table ORDER BY age DESC LIMIT 10;
+   ```
+
+4. **Selecting Specific Columns**:
+   ```cql
+   -- Select only id and name columns
+   SELECT id, name FROM my_keyspace.my_table;
+
+   -- Select only id and name columns with specific conditions
+   SELECT id, name FROM my_keyspace.my_table WHERE age > 25;
+   ```
+
+5. **Selecting Records with Clustering Key Filters**:
+   ```cql
+   -- Select records where age is greater than 25 and name is 'John' (using clustering key filter)
+   SELECT * FROM my_keyspace.my_table WHERE age > 25 AND name = 'John';
+   ```
+
+6. **Selecting Distinct Records**:
+   ```cql
+   -- Select distinct names from the table
+   SELECT DISTINCT name FROM my_keyspace.my_table;
+   ```
+
+7. **Selecting Records with Token-Based Partition Key Filters**:
+   ```cql
+   -- Select records with a specific token range of the partition key
+   SELECT * FROM my_keyspace.my_table WHERE token(id) > token(min_uuid) AND token(id) <= token(max_uuid);
+   ```
+
+These exercises cover various scenarios of selecting records and applying specific conditions using Cassandra Query Language (CQL). You can modify the conditions and queries to practice different scenarios as needed.
