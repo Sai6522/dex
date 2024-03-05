@@ -1,0 +1,18 @@
+// Insert documents
+db.restaurant_records.insertMany([
+    { restaurant_id: 1, restaurant_name: "Restaurant A", customer_name: "John", locality: "Downtown", date: "2024-03-05", cuisine: "Italian", grade: "A", comments: "Great food and service" },
+    { restaurant_id: 2, restaurant_name: "Restaurant B", customer_name: "Alice", locality: "Uptown", date: "2024-03-04", cuisine: "Japanese", grade: "B", comments: "Nice ambiance" },
+    // Add more documents as needed
+]);
+
+// Update document
+db.restaurant_records.updateOne({ restaurant_id: 1 }, { $set: { grade: "B" } });
+
+// Upsert document
+db.restaurant_records.updateOne({ restaurant_id: 3 }, { $set: { restaurant_name: "Restaurant C", grade: "C" } }, { upsert: true });
+
+// Delete document
+db.restaurant_records.deleteOne({ restaurant_id: 2 });
+
+// Create index
+db.restaurant_records.createIndex({ restaurant_name: 1 });
